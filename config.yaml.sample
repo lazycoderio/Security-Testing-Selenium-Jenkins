@@ -1,0 +1,10 @@
+login:
+  - login.html
+logout:
+  - logout.html
+do_not_navigate:
+  - javascript:void(0);
+pattern:
+  - ?
+  - '#'
+base_url: "http://www.webscantest.com/"
