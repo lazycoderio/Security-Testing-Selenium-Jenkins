@@ -292,7 +292,8 @@ class SiteCrawler():
     def logout(self):
         pass
 
-
+@nose.allure.feature('Not Vunerable')
+@nose.allure.story('All Pages')
 def crawl_test():
     PROXY = "localhost:8090"  # IP:PORT or HOST:PORT
 
