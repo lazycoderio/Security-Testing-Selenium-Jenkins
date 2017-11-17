@@ -124,20 +124,20 @@ class SiteCrawler():
     def add_new_links_to_navigate(self):
         new_links = self.get_page_links()
 
-        logging.debug("Removing outside sites")
+        debug("Removing outside sites")
         new_links = self.remove_outside_links(new_links)
-        logging.debug("Removing URL Parameters")
+        debug("Removing URL Parameters")
         new_links = self.remove_url_parameters(new_links)
 
-        logging.debug("Removing duplicates")
+        debug("Removing duplicates")
         new_links = self.remove_duplicates(new_links)
         # make sure links are not in the queue
-        logging.debug("Comparing to queue")
+        debug("Comparing to queue")
         new_links = self.get_new_links(new_links, self.to_navigate_queue)
         # make sure links have not been visted
-        logging.debug("Comparing to Visited Links")
+        debug("Comparing to Visited Links")
         new_links = self.get_new_links(new_links, self.visited_links)
-        logging.debug("Comparing to No Fly List")
+        debug("Comparing to No Fly List")
         new_links = self.remove_do_not_navigate(new_links)
 
         for _ in new_links:
@@ -150,7 +150,7 @@ class SiteCrawler():
             # add in patterns for pagination or whatever has duplicate pages in system into config file
             for pattern in config["pattern"]:
                 if link.contains(pattern):
-                    logging.debug("Splitting {} on {}".format(link.url, pattern))
+                    debug("Splitting {} on {}".format(link.url, pattern))
                     link = link.split(pattern)
         return links
 
@@ -160,7 +160,7 @@ class SiteCrawler():
             # add in patterns for pagination or whatever has duplicate pages in system into config file
             for pattern in config["do_not_navigate"]:
                 if link.contains(pattern):
-                    logging.debug("Removing {} from list".format(link.url))
+                    debug("Removing {} from list".format(link.url))
                     links.remove(link)
         return links
 
@@ -172,7 +172,7 @@ class SiteCrawler():
                 if l == x:
                     count += 1
             if count > 1:
-                logging.debug("Found {} occurrences of {}".format(str(count), l.url))
+                debug("Found {} occurrences of {}".format(str(count), l.url))
                 list.remove(l)
         return list
 
@@ -181,7 +181,7 @@ class SiteCrawler():
         remove = []
         for link in links:
             if not link.contains(config["base_url"]):
-                logging.debug("The link {} is outside of the base site".format(link.url))
+                debug("The link {} is outside of the base site".format(link.url))
                 link.old = link.url
                 link.url = None
                 remove.append(link)
@@ -205,7 +205,7 @@ class SiteCrawler():
         self.driver.get(link.url)
         self.visited_links.append(link)
         self.to_navigate_queue.pop(0)
-        self.save_screenshot()
+        #self.save_screenshot(link.url)
 
 
     def clean_url_for_file(self, url):
