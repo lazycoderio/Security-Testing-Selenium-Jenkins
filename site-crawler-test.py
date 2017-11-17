@@ -295,12 +295,22 @@ class SiteCrawler():
 @nose.allure.feature('Not Vunerable')
 @nose.allure.story('All Pages')
 def crawl_test():
-    PROXY = "localhost:8090"  # IP:PORT or HOST:PORT
+    PROXY = "localhost"
+    PORT = 8090  # IP:PORT or HOST:PORT
 
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--proxy-server=%s'.format(PROXY))
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    desired_capability = webdriver.DesiredCapabilities.FIREFOX
+    desired_capability['proxy'] = {
+        "proxyType": "manual",
+        "httpProxy": PROXY,
+        "httpProxyPort": PORT,
+        "ftpProxy": PROXY,
+        "ftpProxyPort": PORT,
+        "sslProxy": PROXY,
+        "sslProxyPort": PORT
+    }
 
+    firefox_profile = webdriver.FirefoxProfile()
+    driver = webdriver.Firefox(firefox_profile)
     SC = SiteCrawler(driver)
     SC.crawl()
 
