@@ -205,6 +205,7 @@ class SiteCrawler():
         self.driver.get(link.url)
         self.visited_links.append(link)
         self.to_navigate_queue.pop(0)
+        self.save_screenshot()
 
 
     def clean_url_for_file(self, url):
@@ -303,8 +304,6 @@ def crawl_test():
         "proxyType": "manual",
         "httpProxy": PROXY,
         "httpProxyPort": PORT,
-        "ftpProxy": PROXY,
-        "ftpProxyPort": PORT,
         "sslProxy": PROXY,
         "sslProxyPort": PORT
     }
