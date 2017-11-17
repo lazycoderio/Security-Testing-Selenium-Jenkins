@@ -299,7 +299,7 @@ def crawl_test():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--proxy-server=%s'.format(PROXY))
     driver = webdriver.Chrome(chrome_options=chrome_options)
-    driver.add_cookie({'name': '__utmv', 'value': 'cookie_filter'})
+
     SC = SiteCrawler(driver)
     SC.crawl()
 
