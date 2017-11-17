@@ -197,6 +197,7 @@ class SiteCrawler():
                 self.to_navigate_queue.pop(0)
         if not self.to_navigate_queue[0].startswith(config["base_url"]):
             self.to_navigate_queue.pop(0)
+
         return self.to_navigate_queue[0]
 
     @nose.allure.step('Navigating to next URL')
@@ -296,16 +297,13 @@ class SiteCrawler():
 @nose.allure.feature('Not Vunerable')
 @nose.allure.story('All Pages')
 def crawl_test():
-    PROXY = "localhost"
-    PORT = 8090  # IP:PORT or HOST:PORT
+    PROXY = "localhost:8090"
 
     desired_capability = webdriver.DesiredCapabilities.FIREFOX
     desired_capability['proxy'] = {
         "proxyType": "manual",
         "httpProxy": PROXY,
-        "httpProxyPort": PORT,
         "sslProxy": PROXY,
-        "sslProxyPort": PORT
     }
 
     firefox_profile = webdriver.FirefoxProfile()
