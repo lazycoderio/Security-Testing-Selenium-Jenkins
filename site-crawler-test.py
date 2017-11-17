@@ -294,16 +294,11 @@ class SiteCrawler():
 
 
 def crawl_test():
-    myProxy = "localhost:8090"
+    PROXY = "localhost:8090"  # IP:PORT or HOST:PORT
 
-    proxy = Proxy({
-        'proxyType': ProxyType.MANUAL,
-        'httpProxy': myProxy,
-        'ftpProxy': myProxy,
-        'sslProxy': myProxy
-    })
-
-    driver = webdriver.Firefox(proxy=proxy)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--proxy-server=%s'.format(PROXY))
+    driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.add_cookie({'name': '__utmv', 'value': 'cookie_filter'})
     SC = SiteCrawler(driver)
     SC.crawl()

@@ -12,7 +12,7 @@
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
     <option name="_new_regexPattern" value="&quot;&quot;" />
     <option name="_new_additionalArguments" value="&quot;--with-allure --logdir\u003d/tmp &quot;" />
-    <option name="_new_target" value="&quot;$PROJECT_DIR$/site-crawler.py&quot;" />
+    <option name="_new_target" value="&quot;$PROJECT_DIR$/site-crawler-test.py&quot;" />
     <option name="_new_targetType" value="&quot;PATH&quot;" />
     <method />
   </configuration>
