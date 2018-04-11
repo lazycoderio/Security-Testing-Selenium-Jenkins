@@ -13,7 +13,7 @@ pluggy==0.5.2
 py==1.5.2
 pytest==3.2.5
 pytest-allure-adaptor==1.7.9
-pytz==2017.3
+pytz==2018.4
 PyYAML==3.12
 selenium==3.7.0
 six==1.11.0
