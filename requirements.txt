@@ -1,5 +1,5 @@
 allure-python-commons==2.2.3b1
-attrs==17.3.0
+attrs==18.1.0
 Django==1.11.7
 enum34==1.1.6
 image==1.5.16
